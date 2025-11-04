@@ -1,0 +1,41 @@
+<script>
+export default{
+    data(){
+        return {
+            x: 0,
+            y: 0,
+            msg : ""
+        }
+    },
+    methods : {
+        mousePos(e){
+            this.x = e.offsetX;
+            this.y = e.offsetY;
+        },
+        mouseClick(){
+            this.msg += this.x + ", " + this.y + "\n";
+        }
+    }
+}
+</script>
+
+<template>
+    <div id="display" v-on:mousemove="mousePos" v-on:click.right.prevent="mouseClick">
+        x : {{ x }} <br></br>
+        y : {{ y }}
+
+    </div>
+<textarea>{{ msg }}</textarea>
+</template>
+
+
+<style>
+#display{
+    width: 200px;
+    height: 500px;
+    background-color: goldenrod;
+}
+textarea{
+    height : 500px;
+}
+</style>
